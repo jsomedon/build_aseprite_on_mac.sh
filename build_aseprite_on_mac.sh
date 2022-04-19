@@ -50,8 +50,8 @@ unzip -d aseprite $FILE_NAME
 
 ### build:
 
-mkdir -p aseprite/build
-cd aseprite/build
+mkdir -p ./aseprite/build
+cd ./aseprite/build
 
 if
     [ "$ARCH" = "arm64" ]
@@ -90,11 +90,13 @@ ninja aseprite
 
 # make an .app
 cp -r ../../../Aseprite.app.template ./Aseprite.app
-cp bin/aseprite Aseprite.app/Contents/MacOS/
-cp -r bin/data Aseprite.app/Contents/Resources
+mkdir -p ./Aseprite.app/Contents/MacOS
+mkdir -p ./Aseprite.app/Contents/Resources
+cp ./bin/aseprite ./Aseprite.app/Contents/MacOS/
+cp -r ./bin/data ./Aseprite.app/Contents/Resources/
 
 VERSION=`jq -r ".tag_name" ../../latest.json | sed 's/^v//'`
-sed -i "" "s/1.2.34.1/$VERSION/" Aseprite.app/Contents/Info.plist
+sed -i "" "s/1.2.34.1/$VERSION/" ./Aseprite.app/Contents/Info.plist
 
 ### publish:
 
