@@ -6,7 +6,7 @@ Build. Aseprite. On. Mac. Whatelsecoulditbe.
 
 Run that `./build_aseprite_on_mac.sh` and it puts `Aseprite.app` into your `/Applications`.
 
-The script should work on both mac of Apple Silicon and Intel, but I only have tested on Apple Silicon.
+The script should work on mac of both Apple Silicon and Intel, but I only have tested on Apple Silicon.
 
 ### Why don't you make a homebrew formula?
 
