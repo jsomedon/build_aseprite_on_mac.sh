@@ -88,6 +88,9 @@ sed -i "" 's/ENABLE_LIBB2:BOOL=ON/ENABLE_LIBB2:BOOL=OFF/g' ./CMakeCache.txt
 
 ninja aseprite
 
+# test
+# exit 99
+
 # make an .app
 cp -r ../../../Aseprite.app.template ./Aseprite.app
 mkdir -p ./Aseprite.app/Contents/MacOS
@@ -99,6 +102,9 @@ VERSION=`jq -r ".tag_name" ../../latest.json | sed 's/^v//'`
 sed -i "" "s/1.2.34.1/$VERSION/" ./Aseprite.app/Contents/Info.plist
 
 ### publish:
+
+# test
+# exit 98
 
 xattr -r -d com.apple.quarantine ./Aseprite.app
 cp -r ./Aseprite.app /Applications/
