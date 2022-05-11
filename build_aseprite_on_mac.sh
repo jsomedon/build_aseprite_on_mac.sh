@@ -32,7 +32,8 @@ check_dep ninja
 check_dep curl
 mkdir -p buildroot/skia
 cd buildroot
-curl -O -L "https://github.com/aseprite/skia/releases/latest/download/Skia-macOS-Release-$ARCH.zip"
+curl -O -L "https://github.com/aseprite/skia/releases/download/m96-2f1f21b8a9/Skia-macOS-Release-$ARCH.zip"
+# curl -O -L "https://github.com/aseprite/skia/releases/latest/download/Skia-macOS-Release-$ARCH.zip"
 unzip -d ./skia Skia-macOS-Release-$ARCH.zip
 
 ### check source:
