@@ -21,7 +21,7 @@ debug_echo "architecture is $ARCH"
 ### check dependencies:
 
 function check_dep {
-    command -v $1 &> /dev/null || (debug_echo "Install $1 first, now exiting.." && exit 101)
+    command -v $1 &> /dev/null || { debug_echo "Install $1 first, now exiting.."; exit 101; }
 }
 
 # cmake and ninja
