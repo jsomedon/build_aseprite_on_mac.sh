@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+REPO_PATH=`dirname "$(realpath $0)"`
+
 ### check architecture:
 
 # uname -m returns arm64 or x86_64
@@ -34,6 +36,7 @@ mkdir -p buildroot/skia
 cd buildroot
 curl -O -L "https://github.com/aseprite/skia/releases/latest/download/Skia-macOS-Release-$ARCH.zip"
 unzip -d ./skia Skia-macOS-Release-$ARCH.zip
+SKIA_PATH="$REPO_PATH/buildroot/skia"
 
 ### check source:
 
@@ -62,9 +65,9 @@ then
         -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 \
         -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk \
         -DLAF_BACKEND=skia \
-        -DSKIA_DIR="../../skia" \
-        -DSKIA_LIBRARY_DIR="../../skia/out/Release-arm64" \
-        -DSKIA_LIBRARY="../../skia/out/Release-arm64/libskia.a" \
+        -DSKIA_DIR="$SKIA_PATH" \
+        -DSKIA_LIBRARY_DIR="$SKIA_PATH/out/Release-arm64" \
+        -DSKIA_LIBRARY="$SKIA_PATH/out/Release-arm64/libskia.a" \
         -DPNG_ARM_NEON:STRING=on \
         -G Ninja \
         ..
@@ -75,9 +78,9 @@ else
         -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 \
         -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk \
         -DLAF_BACKEND=skia \
-        -DSKIA_DIR="../../skia" \
-        -DSKIA_LIBRARY_DIR="../../skia/out/Release-x64" \
-        -DSKIA_LIBRARY="../../skia/out/Release-x64/libskia.a" \
+        -DSKIA_DIR="$SKIA_PATH" \
+        -DSKIA_LIBRARY_DIR="$SKIA_PATH/out/Release-x64" \
+        -DSKIA_LIBRARY="$SKIA_PATH/out/Release-x64/libskia.a" \
         -G Ninja \
         ..
 fi
